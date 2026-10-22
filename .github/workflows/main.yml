@@ -1,0 +1,19 @@
+name: main
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6.1.0
+
+      - name: build
+        run: |
+          npm install -g npm@latest
+          npm install -g n
+          n lts
+          npm install
+          npm install @tailscale/connect@latest
+          npm run build 
+  
